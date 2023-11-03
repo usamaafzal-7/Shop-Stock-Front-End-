@@ -20,7 +20,6 @@ const Products = () => {
           <Typography fontSize="20px" fontWeight="bold">
             Product grid
           </Typography>
-
           <Box
             height="80%"
             width="80%"
@@ -45,7 +44,6 @@ const Products = () => {
           </Box>
         </Box>
       </Box>
-
       <Box height="10%" width="100%">
         <Box
           height="100%"

@@ -13,7 +13,7 @@ import Login from './Component/LoginPage/Login';
 import MenProduct from './Component/ProductPage/MenProduct';
 import SignUp from './Component/SignUpPage/SignUp';
 function App() {
-
+  // console.log(process.env.REACT_APP_HOST,"hossssstyyyy")
   return (
     <>
       <WebBar/>

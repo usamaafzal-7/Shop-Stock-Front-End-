@@ -22,7 +22,7 @@ const Login = () => {
     onSubmit: async (value, action) => {
       try {
         const postUser = await axios.post(
-          "http://localhost:5000/api/LoginUser",
+          `${process.env.REACT_APP_HOST}/api/LoginUser`,
           value
         );
         console.warn(postUser, "possstt userrrr");

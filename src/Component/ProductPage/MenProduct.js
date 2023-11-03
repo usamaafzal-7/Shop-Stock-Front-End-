@@ -6,11 +6,12 @@ import { experimentalStyled as styled } from "@mui/material/styles";
 import { add } from "../../Redux/CounterReducer";
 
 const MenProduct = () => {
+
   const dispatch = useDispatch();
   const [productData, setProductData] = useState([]);
   const getData = async () => {
     try {
-      const responsee = await axios.get("http://localhost:5000/api/Product");
+      const responsee = await axios.get(`${process.env.REACT_APP_HOST}api/Product`);
       // console.warn(responsee.data);
       setProductData(responsee.data);
     } catch (error) {
@@ -27,13 +28,13 @@ const MenProduct = () => {
 
     try {
       const post = await axios.post(
-        "http://localhost:5000/api/CartProduct",
+        `${process.env.REACT_APP_HOST}api/CartProduct`,
         props
       );
       // console.warn("posst some data product men", post);
       dispatch(add());
     } catch (error) {
-      console.warn("post Data error fdfdfdf", error);
+      console.warn("post Data error Men Product", error);
     }
   };
   useEffect(() => {

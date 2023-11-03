@@ -19,14 +19,14 @@ const CartProduct = () => {
   const [cartData, setCartData] = useState([]);
   const getProduct = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/CartProduct");
+      const response = await axios.get(
+        `${process.env.REACT_APP_HOST}api/CartProduct`
+      );
       // console.warn("get Cart Product", response.data);
-
       response.data.map((val, ind) => {
         totalCart = val.productSubTotal + totalCart;
         // console.warn("tooootallll", totalCart);
       });
-
       setCartData(response.data);
       setTotalCart(totalCart);
       // console.warn("total cart", totalCart);
@@ -34,14 +34,13 @@ const CartProduct = () => {
       console.warn("Cart product Error", error);
     }
   };
-
   const adding = async (props) => {
     // console.warn(props, "props");
     totalCart = 0;
     props.productQuantity = props.productQuantity + 1;
     props.productSubTotal = props.productQuantity * props.productPrice;
     const putSome = await axios.put(
-      `http://localhost:5000/api/CartProduct/${props._id}`,
+      `${process.env.REACT_APP_HOST}api/CartProduct/${props._id}`,
       props
     );
     // console.warn("put someee", putSome);
@@ -55,7 +54,7 @@ const CartProduct = () => {
     props.productSubTotal = props.productQuantity * props.productPrice;
     // console.warn("minussss2", props);
     const putSome1 = await axios.put(
-      `http://localhost:5000/api/CartProduct/${props._id}`,
+      `${process.env.REACT_APP_HOST}api/CartProduct/${props._id}`,
       props
     );
     getProduct();
@@ -64,7 +63,7 @@ const CartProduct = () => {
   const handleDelete = async (picking) => {
     totalCart = 0;
     const deleteProduct = await axios.delete(
-      `http://localhost:5000/api/CartProduct/${picking}`
+      `${process.env.REACT_APP_HOST}api/CartProduct/${picking}`
     );
     getProduct();
   };
@@ -142,7 +141,7 @@ const CartProduct = () => {
                 width="50%"
                 height="300px"
                 src={value.productImage}
-              />  
+              />
               <Box
                 width="45%"
                 display="flex"
@@ -176,15 +175,33 @@ const CartProduct = () => {
                     cursor: "pointer",
                     color: "#000000",
                     fontFamily: "sans-serif",
-                    display:'flex',
-                    alignItems:"center",
-                    gap:"10px"
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
                   }}
                 >
-                  Size : &nbsp; 
-                  <Button sx={{ textTransform: "capitalize" }} variant="outlined" size="small"  >Small</Button>
-                  <Button  sx={{ textTransform: "capitalize" }}  variant="outlined" size="medium">Medium</Button>
-                  <Button  sx={{ textTransform: "capitalize" }}  variant="outlined" size="large">Large</Button>
+                  Size : &nbsp;
+                  <Button
+                    sx={{ textTransform: "capitalize" }}
+                    variant="outlined"
+                    size="small"
+                  >
+                    Small
+                  </Button>
+                  <Button
+                    sx={{ textTransform: "capitalize" }}
+                    variant="outlined"
+                    size="medium"
+                  >
+                    Medium
+                  </Button>
+                  <Button
+                    sx={{ textTransform: "capitalize" }}
+                    variant="outlined"
+                    size="large"
+                  >
+                    Large
+                  </Button>
                 </Typography>
               </Box>
             </Box>

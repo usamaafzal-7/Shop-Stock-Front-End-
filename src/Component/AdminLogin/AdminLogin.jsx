@@ -22,7 +22,7 @@ const AdminLogin = () => {
     onSubmit: async (value, action) => {
       try {
         const postAdmin = await axios.post(
-          "http://localhost:5000/api/LoginUser",
+          `${process.env.REACT_APP_HOST}/api/LoginUser`,
           value
         );
         console.warn(postAdmin, "possstt userrrr");
